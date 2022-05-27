@@ -11,11 +11,11 @@
 
 	
  <xacro:property name="m" value="2" />
- <xacro:property name="l1" value="0.5" />		
- <xacro:property name="b1" value="0.3" />		
- <xacro:property name="h1" value="0.07" />
+ <xacro:property name="l1" value="0.45" />		
+ <xacro:property name="b1" value="0.2" />		
+ <xacro:property name="h1" value="0.45" />
 
- <xacro:property name="r2" value="0.05" />
+ <xacro:property name="r2" value="0.0585" />
 
 	<link name="chassis">
 		<visual>
@@ -42,14 +42,14 @@
 			
 		<!-- caster wheel-->
 		<visual>
-			<origin rpy="0 0 0" xyz="${l1/2-r2} 0 -${r2}"/>
+			<origin rpy="0 0 0" xyz="0.28 0 -0.2835"/>
 			<geometry>
 				<sphere radius="${r2}"/>
 			</geometry>
 		</visual>
 
 		<collision name="caster_front_collision">
-			<origin rpy="0 0 0" xyz="${l1/2-r2} 0 -${r2}"/>
+			<origin rpy="0 0 0" xyz="0.28 0 -0.2835"/>
 			<geometry>
 				<sphere radius="${r2}"/>
 			</geometry>
@@ -66,8 +66,8 @@
 		</collision>	
 	</link>
 
- <xacro:property name="l3" value="0.04" />		
- <xacro:property name="r3" value="0.1" />
+ <xacro:property name="l3" value="0.025" />		
+ <xacro:property name="r3" value="0.1016" />
  <xacro:property name="m3" value="0.2" />
 
 	<link name="right_wheel">
@@ -96,7 +96,7 @@
 	
 
 	<joint name="joint_right_wheel_chassis" type="continuous">
-		<origin rpy="0 0 0" xyz="-0.05 -${b1/2} 0"/>
+		<origin rpy="0 0 0" xyz="-0.175 -0.155 -0.246"/>
 		<child link="right_wheel"/>
 		<parent link="chassis"/>
 		<axis xyz="0 1 0"/>
@@ -131,7 +131,7 @@
 	
 
 	<joint name="joint_left_wheel_chassis" type="continuous">
-		<origin rpy="0 0 0" xyz="-0.05 ${b1/2} 0"/>
+		<origin rpy="0 0 0" xyz="-0.175 0.155 -0.246"/>
 		<child link="left_wheel"/>
 		<parent link="chassis"/>
 		<axis xyz="0 1 0"/>
