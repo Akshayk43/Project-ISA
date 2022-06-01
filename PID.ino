@@ -74,8 +74,8 @@ void loop() {
   if (currentMillis - prevMillis >= LOOPTIME){
     prevMillis = currentMillis;
 
-    demand_speed_left = demandx - (demandz*0.1075);
-    demand_speed_right = demandx + (demandz*0.1075);
+    demand_speed_left = demandx - (demandz*0.409);
+    demand_speed_right = demandx + (demandz*0.409);
   
     /*PID controller for speed control
       Base speed being 1 ms and the demand_speed variables controlling it at fractions of the base.
@@ -84,17 +84,17 @@ void loop() {
     encoder0Diff = encoder0Pos - encoder0Prev; // Get difference between ticks to compute speed
     encoder1Diff = encoder1Pos - encoder1Prev;
     
-    speed_act_left = encoder0Diff/39.65;                    
-    speed_act_right = encoder1Diff/39.65; 
+    speed_act_left = encoder0Diff/7.88;                    
+    speed_act_right = encoder1Diff/7.88; 
   
-    encoder0Error = (demand_speed_left*39.65)-encoder0Diff; // 3965 ticks in 1m = 39.65 ticks in 10ms, due to the 10 millis loop
-    encoder1Error = (demand_speed_right*39.65)-encoder1Diff;
+    encoder0Error = (demand_speed_left*7.88)-encoder0Diff; // 3965 ticks in 1m = 39.65 ticks in 10ms, due to the 10 millis loop
+    encoder1Error = (demand_speed_right*7.88)-encoder1Diff;
   
     encoder0Prev = encoder0Pos; // Saving values
     encoder1Prev = encoder1Pos;
   
-    left_setpoint = demand_speed_left*39.65;  //Setting required speed as a mul/frac of 1 m/s
-    right_setpoint = demand_speed_right*39.65;
+    left_setpoint = demand_speed_left*7.88;  //Setting required speed as a mul/frac of 1 m/s
+    right_setpoint = demand_speed_right*7.88;
   
     left_input = encoder0Diff;  //Input to PID controller is the current difference
     right_input = encoder1Diff;
