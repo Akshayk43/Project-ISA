@@ -66,11 +66,11 @@ const int PWM_INCREMENT = 1;
 // Number of ticks per wheel revolution. We won't use this in this code.
 const int TICKS_PER_REVOLUTION = 620;
  
-// Wheel radius in meters
-const double WHEEL_RADIUS = 0.033;
+// Wheel radius in meters (measured)
+const double WHEEL_RADIUS = 0.1016;
  
-// Distance from center of the left tire to the center of the right tire in m
-const double WHEEL_BASE = 0.17;
+// Distance from center of the left tire to the center of the right tire in m (measured)
+const double WHEEL_BASE = 0.4064;
  
 // Number of ticks a wheel makes moving a linear distance of 1 meter
 // This value was measured manually.
