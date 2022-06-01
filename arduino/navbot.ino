@@ -84,8 +84,8 @@ void loop() {
   if (currentMillis - prevMillis >= LOOPTIME){
     prevMillis = currentMillis;
 
-    demand_speed_left = demandx - (demandz*0.1075);
-    demand_speed_right = demandx + (demandz*0.1075);
+    demand_speed_left = demandx - (demandz*0.4064);
+    demand_speed_right = demandx + (demandz*0.4064);
   
     /*PID controller for speed control
       Base speed being 1 ms and the demand_speed variables controlling it at fractions of the base.
