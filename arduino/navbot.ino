@@ -53,7 +53,15 @@ void cmd_vel_cb( const geometry_msgs::Twist& twist){
 
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", cmd_vel_cb );
 geometry_msgs::Vector3Stamped speed_msg;                                //create a "speed_msg" ROS message
-ros::Publisher speed_pub("speed", &speed_msg);                          //create a publisher to ROS topic "speed" using the "speed_msg" type
+ros::Publisher speed_pub("speed", &speed_msg); //create a publisher to ROS topic "speed" using the "speed_msg" type
+
+// Keep track of the number of wheel ticks
+std_msgs::Int16 right_wheel_tick_count;
+ros::Publisher rightPub("right_ticks", &encoder1Pos);
+ 
+std_msgs::Int16 left_wheel_tick_count;
+ros::Publisher leftPub("left_ticks", &encoder0Pos);
+
 
 double speed_act_left = 0;                    //Actual speed for left wheel in m/s
 double speed_act_right = 0;                    //Command speed for left wheel in m/s 
@@ -108,6 +116,10 @@ void loop() {
   
     left_input = encoder0Diff;  //Input to PID controller is the current difference
     right_input = encoder1Diff;
+    
+    // Publish tick counts to topics
+    leftPub.publish( &encoder0Pos );
+    rightPub.publish( &encoder1Pos );
     
     leftPID.Compute();
     left.rotate(left_output);
