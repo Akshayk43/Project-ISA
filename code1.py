@@ -1,0 +1,6 @@
+x=int(input())
+y=int(input())
+print(complex(x,y))
+print(min(x,y))
+print(sum([x,y]))
+print(max(x,y))
